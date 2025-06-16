@@ -28,6 +28,10 @@ pub mod anchor_calc{
             ctx.accounts.account.data = ctx.accounts.account.data+amount;
             OK(())
         }
+        fn sub(ctx:Context<Subs>,amount:u32)->Result<()>{
+            ctx.accounts.account.data= ctx.accounts.account.data-amount;
+            OK(()) ;
+        }
 }
 
 #[account]
@@ -45,6 +49,12 @@ pub struct Initialize<'info>{
 
  #[derive(Account)]
  pub struct Add{
+    #[account(mut)]
+    account:Account<'info>
+    signer:Signer<'info>
+ }
+ #[derive(Account)]
+ pub struct Subs{
     #[account(mut)]
     account:Account<'info>
     signer:Signer<'info>
