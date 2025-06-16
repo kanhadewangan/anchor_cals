@@ -30,3 +30,22 @@ pub mod anchor_calc{
         }
 }
 
+#[account]
+pub struct Initialize<'info>{
+    #[account(init, payer=signer , space=8+8)]
+    pub new_account:Account<'info,NewAccount>
+    pub signer:Signer<'info>,
+}
+#[derive(Account)]
+ pub struct Duble{
+    #[account(mut)]
+    account:Account<'info>
+    signer:Signer<'info>
+ }
+
+ #[derive(Account)]
+ pub struct Add{
+    #[account(mut)]
+    account:Account<'info>
+    signer:Signer<'info>
+ }
